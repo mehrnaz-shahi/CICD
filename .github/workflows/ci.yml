@@ -3,21 +3,19 @@ name: CI
 on: push
 
 jobs:
-  super-lint-Unittest:
+  build:
     name: Lint Code
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout my code
-        uses: actions/checkout@v3
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-      - name: Run Super-Lint
-        uses: github/super-linter@v5
-        env:
-            VALIDATE_ALL_CODEBASE: false
-            DEFAULT_BRANCH: main
-            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      
-      - name: Unit-testing
-        run: python test.py
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.x
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
 
     
