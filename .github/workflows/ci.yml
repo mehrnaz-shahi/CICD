@@ -18,6 +18,6 @@ jobs:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       
       - name: Unit-testing
-        run: python test_cases.py
+        run: python test.py
 
     
